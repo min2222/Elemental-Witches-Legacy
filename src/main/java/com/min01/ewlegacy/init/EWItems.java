@@ -82,6 +82,18 @@ public class EWItems
 	public static final RegistryObject<Item> ICE_EGG = ITEMS.register("ice_egg", () -> new ItemIceEgg());
 	public static final RegistryObject<Item> NATURE_EGG = ITEMS.register("nature_egg", () -> new ItemNatureEgg());
 	public static final RegistryObject<Item> MAGICAL_SEED = ITEMS.register("magical_seed", () -> new ItemMagicalSeed());
+
+	public static final RegistryObject<Item> FIRE_WITCH_SPAWN_EGG = registerSpawnEgg("fire_witch_spawn_egg", () -> EWEntities.FIRE_WITCH.get(), 14614785, 9054472);
+	public static final RegistryObject<Item> LIGHTNING_WITCH_SPAWN_EGG = registerSpawnEgg("lightning_witch_spawn_egg", () -> EWEntities.LIGHTNING_WITCH.get(), 13695576, 16252462);
+	public static final RegistryObject<Item> AIR_WITCH_SPAWN_EGG = registerSpawnEgg("air_witch_spawn_egg", () -> EWEntities.AIR_WITCH.get(), 14211288, 12434877);
+	public static final RegistryObject<Item> EARTH_WITCH_SPAWN_EGG = registerSpawnEgg("earth_witch_spawn_egg", () -> EWEntities.EARTH_WITCH.get(), 2757130, 3875851);
+	public static final RegistryObject<Item> WATER_WITCH_SPAWN_EGG = registerSpawnEgg("water_witch_spawn_egg", () -> EWEntities.WATER_WITCH.get(), 3801567, 16639);
+	public static final RegistryObject<Item> LIGHT_WITCH_SPAWN_EGG = registerSpawnEgg("light_witch_spawn_egg", () -> EWEntities.LIGHT_WITCH.get(), 16776960, 16054872);
+	public static final RegistryObject<Item> DARK_WITCH_SPAWN_EGG = registerSpawnEgg("dark_witch_spawn_egg", () -> EWEntities.DARK_WITCH.get(), 1640199, 2755082);
+	public static final RegistryObject<Item> ICE_WITCH_SPAWN_EGG = registerSpawnEgg("ice_witch_spawn_egg", () -> EWEntities.ICE_WITCH.get(), 8510197, 3054334);
+	public static final RegistryObject<Item> NATURE_WITCH_SPAWN_EGG = registerSpawnEgg("nature_witch_spawn_egg", () -> EWEntities.NATURE_WITCH.get(), 3368448, 3355392);
+	public static final RegistryObject<Item> HALLOWEEN_WITCH_SPAWN_EGG = registerSpawnEgg("halloween_witch_spawn_egg", () -> EWEntities.HALLOWEEN_WITCH.get(), 1640199, 3872523);
+	public static final RegistryObject<Item> CHRISTMAS_WITCH_SPAWN_EGG = registerSpawnEgg("christmas_witch_spawn_egg", () -> EWEntities.CHRISTMAS_WITCH.get(), 745761, 14614785);
 	
 	public static <T extends Mob> RegistryObject<Item> registerSpawnEgg(String name, Supplier<EntityType<T>> entity, int color1, int color2) 
 	{

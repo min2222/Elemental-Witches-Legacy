@@ -1,29 +1,22 @@
-//Deobfuscated with https://github.com/SimplyProgrammer/Minecraft-Deobfuscator3000 using mappings "D:\nooung\other\minecraft\source\Minecraft-Deobfuscator3000-1.2.3\1.7.10 stable mappings"!
-
-//Decompiled by Procyon!
-
 package com.min01.ewlegacy.entity.render;
 
-import net.minecraft.entity.*;
-import net.minecraft.resources.ResourceLocation;
+import com.min01.ewlegacy.entity.model.ModelSwiftEnt;
+import com.min01.ewlegacy.entity.skill.EntitySwiftEnt;
+import com.mojang.blaze3d.vertex.PoseStack;
 
-public class SwiftEntRenderer extends RenderLiving
+import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
+
+public class SwiftEntRenderer extends EWMobRenderer<EntitySwiftEnt, ModelSwiftEnt>
 {
-    private static final ResourceLocation FastEnt_Texture;
-    
-    public SwiftEntRenderer(final ModelBase par1ModelBase, final float par2) {
-        super(par1ModelBase, par2);
-    }
-    
-    public void doRender(final EntityLiving par1EntityLiving, final double par2, final double par4, final double par6, final float par8, final float par9) {
-        super.doRender(par1EntityLiving, par2, par4, par6, par8, par9);
-    }
-    
-    protected ResourceLocation getEntityTexture(final Entity par1Entity) {
-        return SwiftEntRenderer.FastEnt_Texture;
-    }
-    
-    static {
-        FastEnt_Texture = new ResourceLocation("mwaw:textures/entity/fastent.png");
-    }
+	public SwiftEntRenderer(Context p_174304_) 
+	{
+		super(p_174304_, new ModelSwiftEnt(p_174304_.bakeLayer(ModelSwiftEnt.LAYER_LOCATION)), 0.2F, "swift_ent");
+	}
+	
+	@Override
+	protected void scale(EntitySwiftEnt p_115314_, PoseStack p_115315_, float p_115316_) 
+	{
+		p_115315_.scale(0.5F, 0.5F, 0.5F);
+		p_115315_.translate(0.0F, 1.1F, 0.0F);
+	}
 }

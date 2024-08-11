@@ -3,13 +3,13 @@ package com.min01.ewlegacy.particle;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleProvider;
-import net.minecraft.client.particle.SplashParticle;
 import net.minecraft.client.particle.SpriteSet;
+import net.minecraft.client.particle.WaterDropParticle;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class WaterCircleParticle extends SplashParticle
+public class WaterCircleParticle extends WaterDropParticle
 {
     private final double orbitSpeed;
     private final double portalPosX;
@@ -22,7 +22,8 @@ public class WaterCircleParticle extends SplashParticle
     
     public WaterCircleParticle(ClientLevel world, double x, double y, double z, double motionY, double angle) 
     {
-        super(world, x, y, z, 0.0D, motionY, 0.0D);
+        super(world, x, y, z);
+        this.gravity = 0.04F;
         this.portalPosX = x;
         this.portalPosZ = z;
         this.zd = 0.0D;

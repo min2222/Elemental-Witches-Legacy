@@ -1,29 +1,22 @@
-//Deobfuscated with https://github.com/SimplyProgrammer/Minecraft-Deobfuscator3000 using mappings "D:\nooung\other\minecraft\source\Minecraft-Deobfuscator3000-1.2.3\1.7.10 stable mappings"!
-
-//Decompiled by Procyon!
-
 package com.min01.ewlegacy.entity.render;
 
-import net.minecraft.entity.*;
-import net.minecraft.resources.ResourceLocation;
+import com.min01.ewlegacy.entity.model.ModelFireBat;
+import com.min01.ewlegacy.entity.skill.EntityFireBat;
+import com.mojang.blaze3d.vertex.PoseStack;
 
-public class FireBatRenderer extends RenderLiving
+import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
+
+public class FireBatRenderer extends EWMobRenderer<EntityFireBat, ModelFireBat>
 {
-    private static final ResourceLocation FireBat_Texture;
-    
-    public FireBatRenderer(final ModelBase par1ModelBase, final float par2) {
-        super(par1ModelBase, par2);
-    }
-    
-    public void doRender(final EntityLiving par1EntityLiving, final double par2, final double par4, final double par6, final float par8, final float par9) {
-        super.doRender(par1EntityLiving, par2, par4, par6, par8, par9);
-    }
-    
-    protected ResourceLocation getEntityTexture(final Entity par1Entity) {
-        return FireBatRenderer.FireBat_Texture;
-    }
-    
-    static {
-        FireBat_Texture = new ResourceLocation("mwaw:textures/entity/firebat.png");
-    }
+	public FireBatRenderer(Context p_174304_) 
+	{
+		super(p_174304_, new ModelFireBat(p_174304_.bakeLayer(ModelFireBat.LAYER_LOCATION)), 0.5F, "fire_bat");
+	}
+	
+	@Override
+	protected void scale(EntityFireBat p_115314_, PoseStack p_115315_, float p_115316_) 
+	{
+		p_115315_.scale(0.3F, 0.3F, 0.3F);
+		p_115315_.translate(0, 3.5F, 0);
+	}
 }

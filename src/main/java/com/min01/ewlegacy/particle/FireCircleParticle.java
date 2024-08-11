@@ -1,15 +1,17 @@
 package com.min01.ewlegacy.particle;
 
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleProvider;
+import net.minecraft.client.particle.ParticleRenderType;
+import net.minecraft.client.particle.RisingParticle;
 import net.minecraft.client.particle.SpriteSet;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.util.Mth;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class FireCircleParticle extends FlameParticle
+public class FireCircleParticle extends RisingParticle
 {
     private final double orbitSpeed;
     private final double portalPosX;
@@ -31,6 +33,36 @@ public class FireCircleParticle extends FlameParticle
         this.orbitSpeed = (world.random.nextDouble() * 0.3217 + 0.1954) * (this.random.nextBoolean() ? 1 : -1);
         this.customMaxAge = (byte)(this.lifetime = this.age = this.random.nextInt(15) + 10 * 2);
         this.portalParticleScale = this.quadSize = 0.6F;
+    }
+    
+    @Override
+    public ParticleRenderType getRenderType()
+    {
+        return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
+    }
+
+    @Override
+    public void move(double p_106817_, double p_106818_, double p_106819_)
+    {
+    	this.setBoundingBox(this.getBoundingBox().move(p_106817_, p_106818_, p_106819_));
+    	this.setLocationFromBoundingbox();
+    }
+    
+    @Override
+    public int getLightColor(float p_106821_)
+    {
+    	float f = ((float)this.age + p_106821_) / (float)this.lifetime;
+    	f = Mth.clamp(f, 0.0F, 1.0F);
+        int i = super.getLightColor(p_106821_);
+        int j = i & 255;
+        int k = i >> 16 & 255;
+        j += (int)(f * 15.0F * 16.0F);
+        if(j > 240)
+        {
+           j = 240;
+        }
+
+        return j | k << 16;
     }
     
     @Override

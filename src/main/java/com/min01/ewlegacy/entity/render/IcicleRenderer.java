@@ -1,36 +1,22 @@
-//Deobfuscated with https://github.com/SimplyProgrammer/Minecraft-Deobfuscator3000 using mappings "D:\nooung\other\minecraft\source\Minecraft-Deobfuscator3000-1.2.3\1.7.10 stable mappings"!
-
-//Decompiled by Procyon!
-
 package com.min01.ewlegacy.entity.render;
 
-import org.lwjgl.opengl.GL11;
+import com.min01.ewlegacy.entity.model.ModelIcicle;
+import com.min01.ewlegacy.entity.skill.EntityIcicle;
+import com.mojang.blaze3d.vertex.PoseStack;
 
-import net.minecraft.entity.*;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 
-public class IcicleRenderer extends RenderLiving
+public class IcicleRenderer extends EWTranslucentMobRenderer<EntityIcicle, ModelIcicle>
 {
-    private static final ResourceLocation Icicle_Texture;
-    
-    public IcicleRenderer(final ModelBase par1ModelBase, final float par2) {
-        super(par1ModelBase, par2);
-    }
-    
-    public void doRender(final EntityLiving par1EntityLiving, final double par2, final double par4, final double par6, final float par8, final float par9) {
-        GL11.glEnable(3042);
-        GL11.glBlendFunc(770, 771);
-        GL11.glColor4f(1.0f, 1.0f, 1.0f, 0.7f);
-        super.doRender(par1EntityLiving, par2, par4, par6, par8, par9);
-        GL11.glDisable(3042);
-        GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-    }
-    
-    protected ResourceLocation getEntityTexture(final Entity par1Entity) {
-        return IcicleRenderer.Icicle_Texture;
-    }
-    
-    static {
-        Icicle_Texture = new ResourceLocation("mwaw:textures/entity/icicle.png");
-    }
+	public IcicleRenderer(Context p_174304_)
+	{
+		super(p_174304_, new ModelIcicle(p_174304_.bakeLayer(ModelIcicle.LAYER_LOCATION)), 0.5F, "icicle");
+	}
+	
+	@Override
+	protected void scale(EntityIcicle p_115314_, PoseStack p_115315_, float p_115316_)
+	{
+		p_115315_.scale(-1.0F, -1.0F, -1.0F);
+		p_115315_.translate(0.0F, -1.3F, 0.0F);
+	}
 }

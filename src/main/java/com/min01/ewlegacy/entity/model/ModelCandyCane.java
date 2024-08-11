@@ -39,8 +39,8 @@ public class ModelCandyCane extends EntityModel<EntityCandyCane>
 	@Override
 	public void setupAnim(EntityCandyCane entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
-        this.Shape1.xRot = netHeadYaw / 28.647888F;
-        this.Shape1.yRot = headPitch / 28.647888F;
+        this.Shape1.xRot = headPitch / 28.647888F;
+        this.Shape1.yRot = netHeadYaw / 28.647888F;
 	}
 
 	@Override

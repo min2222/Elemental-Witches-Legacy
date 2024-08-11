@@ -57,7 +57,7 @@ public class ItemChristmasStaff extends Item
     		}
     		else if(!p_41432_.isClientSide)
     		{
-    			p_41433_.sendSystemMessage(Component.translatable("chat.ewlegacy.nopower"));
+    			p_41433_.sendSystemMessage(Component.translatable("chat.ewlegacy.no_power"));
     		}
     	}
     	return InteractionResultHolder.success(stack);

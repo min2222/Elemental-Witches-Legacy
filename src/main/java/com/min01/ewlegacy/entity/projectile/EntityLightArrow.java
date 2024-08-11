@@ -1,5 +1,8 @@
 package com.min01.ewlegacy.entity.projectile;
 
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.IndirectEntityDamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -25,6 +28,12 @@ public class EntityLightArrow extends AbstractArrow
 		super(p_36711_, p_36718_, p_36715_);
 		this.pickup = Pickup.DISALLOWED;
 	}
+	
+	//TODO
+    public static DamageSource causeLightArrowDamage(EntityLightArrow entitylightarrow, Entity entity) 
+    {
+        return new IndirectEntityDamageSource("light_arrow", entitylightarrow, entity).setProjectile();
+    }
 
 	@Override
 	protected ItemStack getPickupItem()
