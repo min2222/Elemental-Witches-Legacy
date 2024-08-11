@@ -149,7 +149,8 @@ public class EntityWaterWitch extends Raider implements RangedAttackMob
         {
             --this.summonWaterMinion;
         }
-        if(this.getHealth() < 20.0f) {
+        if(this.getHealth() < 20.0F) 
+        {
             this.deathSummon = true;
         }
         ElementalWitchesLegacy.PROXY.spawnParticles("water_normal", this);

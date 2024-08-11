@@ -67,7 +67,8 @@ public class EntityPumpkinShot extends AbstractEWHurtingProjectile
     @Override
     public void tick() 
     {
-        if(this.tickCount >= 3) {
+        if(this.tickCount >= 3)
+        {
             this.discard();
         }
         super.tick();

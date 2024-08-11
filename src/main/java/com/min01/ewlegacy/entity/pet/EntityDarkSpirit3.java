@@ -47,6 +47,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.fluids.FluidType;
 
 public class EntityDarkSpirit3 extends TamableAnimal
 {
@@ -94,8 +95,16 @@ public class EntityDarkSpirit3 extends TamableAnimal
         return target.hurt(DamageSource.mobAttack(this), 10.0F);
     }
     
-    public boolean isPushedByWater() {
-        return false;
+    @Override
+    public boolean isPushedByFluid() 
+    {
+    	return false;
+    }
+    
+    @Override
+    public boolean isPushedByFluid(FluidType type) 
+    {
+    	return false;
     }
     
     @Override

@@ -123,10 +123,6 @@ public class EntityGiantSquid extends AbstractOwnableMonster<EntityWaterWitch> i
     	return 0.4F;
     }
     
-    protected boolean canTriggerWalking() {
-        return false;
-    }
-    
     @Override
     protected void dropCustomDeathLoot(DamageSource p_21385_, int p_21386_, boolean p_21387_) 
     {

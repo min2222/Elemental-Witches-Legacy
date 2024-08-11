@@ -282,8 +282,10 @@ public class EntityChristmasWitch extends Raider implements RangedAttackMob
         this.deathSummon = compound.getBoolean("WitchDeathSummon");
         this.summoned = compound.getBoolean("WitchDeathSummoned");
     }
-    
-    protected boolean canDespawn() {
-        return false;
+
+    @Override
+    public boolean removeWhenFarAway(double p_37894_)
+    {
+    	return false;
     }
 }

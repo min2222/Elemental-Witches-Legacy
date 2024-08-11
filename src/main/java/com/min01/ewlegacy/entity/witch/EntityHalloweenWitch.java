@@ -242,7 +242,8 @@ public class EntityHalloweenWitch extends Raider implements RangedAttackMob
         this.performRangedAttack(par1, living.getX(), living.getY() + living.getEyeHeight() * 0.5, living.getZ(), par1 == 0 && this.random.nextFloat() < 0.001F);
     }
     
-    private void performRangedAttack(int par1, double par2, double par4, double par6, boolean par8) {
+    private void performRangedAttack(int par1, double par2, double par4, double par6, boolean par8)
+    {
         double d3 = this.getHeadX(par1);
         double d4 = this.getHeadY(par1);
         double d5 = this.getHeadZ(par1);

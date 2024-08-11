@@ -258,7 +258,8 @@ public class EntityAirWitch extends Raider implements RangedAttackMob
         this.summonWindClone = compound.getInt("WitchSummonWindClone");
     }
     
-    protected Item getDropItem() {
+    protected Item getDropItem()
+    {
         return EWItems.AIR_SHARD.get();
     }
     
