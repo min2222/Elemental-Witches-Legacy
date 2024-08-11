@@ -1,0 +1,29 @@
+{
+	"lightning": {
+		"category": "master",
+		"sounds": [
+			{
+				"name": "ewlegacy:entity/lightning",
+				"stream": false
+			}
+		]
+	},
+	"whisper": {
+		"category": "master",
+		"sounds": [
+			{
+				"name": "ewlegacy:entity/whisper",
+				"stream": false
+			}
+		]
+	},
+	"laugh": {
+		"category": "master",
+		"sounds": [
+			{
+				"name": "ewlegacy:entity/laugh",
+				"stream": false
+			}
+		]
+	}
+}
