@@ -90,7 +90,7 @@ public class EntityLightShieldBad extends AbstractOwnableMonster<EntityLightWitc
             }
             if(this.getOwner() != null)
             {
-                this.moveTo(this.getOwner().getX(), this.getOwner().getY() - 1.7, this.getOwner().getZ(), 0.0F, 0.0F);
+                this.moveTo(this.getOwner().getX(), this.getOwner().getY(), this.getOwner().getZ(), 0.0F, 0.0F);
             }
         }
         super.aiStep();
@@ -119,7 +119,7 @@ public class EntityLightShieldBad extends AbstractOwnableMonster<EntityLightWitc
         {
             if(source.getEntity() instanceof LivingEntity)
             {
-                ((LivingEntity)source.getEntity()).setHealth(((LivingEntity)source.getEntity()).getHealth() - damage);
+                ((LivingEntity)source.getEntity()).hurt(source, damage);
             }
             return super.hurt(source, 0.0F);
         }

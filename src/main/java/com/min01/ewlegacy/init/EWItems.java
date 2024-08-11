@@ -34,7 +34,7 @@ import com.min01.ewlegacy.item.ItemSandShard;
 import com.min01.ewlegacy.item.ItemWaterEgg;
 import com.min01.ewlegacy.item.ItemWaterShard;
 import com.min01.ewlegacy.item.ItemWaterStaff;
-import com.min01.ewlegacy.item.ItemWindStaff;
+import com.min01.ewlegacy.item.ItemAirStaff;
 
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
@@ -61,7 +61,7 @@ public class EWItems
 	public static final RegistryObject<Item> NATURE_SHARD = ITEMS.register("nature_shard", () -> new ItemNatureShard());
 	public static final RegistryObject<Item> SAND_SHARD = ITEMS.register("sand_shard", () -> new ItemSandShard());
 	public static final RegistryObject<Item> FIRE_STAFF = ITEMS.register("fire_staff", () -> new ItemFireStaff());
-	public static final RegistryObject<Item> WIND_STAFF = ITEMS.register("wind_staff", () -> new ItemWindStaff());
+	public static final RegistryObject<Item> AIR_STAFF = ITEMS.register("air_staff", () -> new ItemAirStaff());
 	public static final RegistryObject<Item> EARTH_STAFF = ITEMS.register("earth_staff", () -> new ItemEarthStaff());
 	public static final RegistryObject<Item> LIGHTNING_STAFF = ITEMS.register("lightning_staff", () -> new ItemLightningStaff());
 	public static final RegistryObject<Item> HALLOWEEN_STAFF = ITEMS.register("halloween_staff", () -> new ItemHalloweenStaff());

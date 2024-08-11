@@ -17,6 +17,5 @@ public class SwiftEntRenderer extends EWMobRenderer<EntitySwiftEnt, ModelSwiftEn
 	protected void scale(EntitySwiftEnt p_115314_, PoseStack p_115315_, float p_115316_) 
 	{
 		p_115315_.scale(0.5F, 0.5F, 0.5F);
-		p_115315_.translate(0.0F, 1.1F, 0.0F);
 	}
 }

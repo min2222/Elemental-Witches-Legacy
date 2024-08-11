@@ -1,5 +1,5 @@
 {
-	"itemGroup.ewlegacy": "Elemental Witches Legacy",
+	"itemGroup.ewlegacy": "Elemental Witches",
 	"item.ewlegacy.lightning_ball": "Lightning Ball",
 	"item.ewlegacy.fire_shard": "Fire Shard",
 	"item.ewlegacy.lightning_shard": "Lightning Shard",
@@ -12,7 +12,7 @@
 	"item.ewlegacy.nature_shard": "Nature Shard",
 	"item.ewlegacy.sand_shard": "Sand Shard",
 	"item.ewlegacy.fire_staff": "Fire Staff",
-	"item.ewlegacy.wind_staff": "Wind Staff",
+	"item.ewlegacy.air_staff": "Air Staff",
 	"item.ewlegacy.earth_staff": "Earth Staff",
 	"item.ewlegacy.lightning_staff": "Lightning Staff",
 	"item.ewlegacy.halloween_staff": "Halloween Staff",
@@ -126,6 +126,13 @@
 	"entity.ewlegacy.sand_minion": "Sand Minion",
 	"entity.ewlegacy.sand_witch": "Sand Witch",
 	"entity.ewlegacy.water_witch": "Water Witch",
+	"effect.ewlegacy.paralyze": "Paralyze",
+	"effect.ewlegacy.paranoid": "Paranoid",
+	"effect.ewlegacy.ender_skin": "Ender Skin",
+	"effect.ewlegacy.earth_stance": "Earth Stance",
+	"effect.ewlegacy.air_stance": "Air Stance",
+	"effect.ewlegacy.frost_bite": "Frost Bite",
+	"effect.ewlegacy.water_pull": "Water Pull",
 	"chat.ewlegacy.no_power": "One does not simply use the staff...",
 	"death.attack.light_arrow": "Receive Divine Punishment, death.."
 }

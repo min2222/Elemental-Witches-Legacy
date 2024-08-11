@@ -125,7 +125,8 @@ public class EntityRifle extends AbstractOwnableMonster<EntityChristmasWitch> im
         p_33317_.playSound(SoundEvents.LEVER_CLICK, 5.0F, 5.0F);
     }
     
-    private void performRangedAttack(int par1, LivingEntity living) {
+    private void performRangedAttack(int par1, LivingEntity living)
+    {
         this.performRangedAttack(par1, living.getX(), living.getY() + living.getEyeHeight() * 0.5, living.getZ(), par1 == 0 && this.random.nextFloat() < 0.001F);
     }
     

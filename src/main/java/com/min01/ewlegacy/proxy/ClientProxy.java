@@ -1,31 +1,7 @@
 package com.min01.ewlegacy.proxy;
 
 import com.min01.ewlegacy.init.EWParticles;
-import com.min01.ewlegacy.particle.DarkCircleParticle;
-import com.min01.ewlegacy.particle.DarkParticle;
-import com.min01.ewlegacy.particle.DarkProjectileParticle;
-import com.min01.ewlegacy.particle.FireCircleParticle;
-import com.min01.ewlegacy.particle.GreenChristmasParticle;
-import com.min01.ewlegacy.particle.IceCircleParticle;
-import com.min01.ewlegacy.particle.LeafCircleParticle;
-import com.min01.ewlegacy.particle.LeafParticle;
-import com.min01.ewlegacy.particle.LightCircleParticle;
-import com.min01.ewlegacy.particle.LightParticle;
-import com.min01.ewlegacy.particle.LightProjectileParticle;
-import com.min01.ewlegacy.particle.LightningCircleParticle;
-import com.min01.ewlegacy.particle.LightningParticle;
-import com.min01.ewlegacy.particle.NatureProjectileParticle;
-import com.min01.ewlegacy.particle.PoisonParticle;
-import com.min01.ewlegacy.particle.RedChristmasParticle;
-import com.min01.ewlegacy.particle.SmallDarkCircleParticle;
-import com.min01.ewlegacy.particle.SmallWindParticle;
-import com.min01.ewlegacy.particle.SnowFlakeParticle;
-import com.min01.ewlegacy.particle.SoulParticle;
-import com.min01.ewlegacy.particle.TornadoParticle;
-import com.min01.ewlegacy.particle.WaterCircleParticle;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -35,8 +11,6 @@ import net.minecraft.world.level.block.Blocks;
 
 public class ClientProxy extends CommonProxy
 {
-	public static final Minecraft MC = Minecraft.getInstance();
-    
     @Override
     public void spawnParticles(String particles, Entity entity)
     {
@@ -48,7 +22,7 @@ public class ClientProxy extends CommonProxy
                 for(int i = 0; i < 10; ++i)
                 {
                     double d = level.random.nextGaussian() * 0.004;
-                    MC.particleEngine.add(new TornadoParticle((ClientLevel)level, entity.getX(), entity.getY() - 0.5, entity.getZ(), d, 1.0));
+                    level.addParticle(EWParticles.TORNADO.get(), entity.getX(), entity.getY() - 0.5, entity.getZ(), 0.0D, d, 1.0);
                 }
             }
             if(particles.equals("air_tornado_big")) 
@@ -56,8 +30,8 @@ public class ClientProxy extends CommonProxy
                 for(double j = 0.0; j < 11.0; j += 0.1) 
                 {
                     double d2 = level.random.nextGaussian() * 0.004;
-                    MC.particleEngine.add(new TornadoParticle((ClientLevel)level, entity.getX(), entity.getY() - 2.0 + j, entity.getZ(), d2, j));
-                    MC.particleEngine.add(new TornadoParticle((ClientLevel)level, entity.getX(), entity.getY() - 2.0 + j, entity.getZ(), d2, j));
+                    level.addParticle(EWParticles.TORNADO.get(), entity.getX(), entity.getY() - 2.0 + j, entity.getZ(), 0.0D, d2, j);
+                    level.addParticle(EWParticles.TORNADO.get(), entity.getX(), entity.getY() - 2.0 + j, entity.getZ(), 0.0D, d2, j);
                 }
             }
             if(particles.equals("air_normal"))
@@ -68,7 +42,7 @@ public class ClientProxy extends CommonProxy
                     double d3 = level.random.nextGaussian() * 0.02;
                     double d4 = level.random.nextGaussian() * 0.02;
                     double d5 = 10.0;
-                    MC.particleEngine.add(new SmallWindParticle((ClientLevel)level, entity.getX() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5, entity.getY() + entity.level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5, d, d3, d4));
+                    level.addParticle(EWParticles.SMALL_WIND.get(), entity.getX() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5, entity.getY() + entity.level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5, d, d3, d4);
                 }
             }
             if(particles.equals("air_main"))
@@ -79,7 +53,7 @@ public class ClientProxy extends CommonProxy
                     double d3 = level.random.nextGaussian() * 0.02;
                     double d4 = level.random.nextGaussian() * 0.02;
                     double d5 = 10.0;
-                    level.addParticle(ParticleTypes.EXPLOSION, entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5, d, d3, d4);
+                    level.addParticle(ParticleTypes.CLOUD, entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5, d, d3, d4);
                 }
             }
             if(particles.equals("christmas_normal"))
@@ -90,8 +64,8 @@ public class ClientProxy extends CommonProxy
                     double d3 = level.random.nextGaussian() * 0.02;
                     double d4 = level.random.nextGaussian() * 0.02;
                     double d5 = 10.0;
-                    MC.particleEngine.add(new GreenChristmasParticle((ClientLevel)level, entity.getX() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5, entity.getY() + entity.level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5, d, d3, d4));
-                    MC.particleEngine.add(new RedChristmasParticle((ClientLevel)level, entity.getX() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5, entity.getY() + entity.level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5, d, d3, d4));
+                    level.addParticle(EWParticles.GREEN_CHRISTMAS.get(), entity.getX() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5, entity.getY() + entity.level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5, d, d3, d4);
+                    level.addParticle(EWParticles.RED_CHRISTMAS.get(), entity.getX() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5, entity.getY() + entity.level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5, d, d3, d4);
                 }
             }
             if(particles.equals("dark_normal"))
@@ -102,7 +76,7 @@ public class ClientProxy extends CommonProxy
                     double d3 = level.random.nextGaussian() * 0.02;
                     double d4 = level.random.nextGaussian() * 0.02;
                     double d5 = 10.0;
-                    MC.particleEngine.add(new DarkParticle((ClientLevel)level, entity.getX() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5, entity.getY() + entity.level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5, d, d3, d4));
+                    level.addParticle(EWParticles.DARK.get(), entity.getX() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5, entity.getY() + entity.level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5, d, d3, d4);
                 }
             }
             if(particles.equals("dark_mark"))
@@ -113,9 +87,9 @@ public class ClientProxy extends CommonProxy
                     double d3 = level.random.nextGaussian() * 0.02;
                     double d4 = level.random.nextGaussian() * 0.02;
                     double d5 = 10.0;
-                    level.addParticle(ParticleTypes.LARGE_SMOKE, entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5, d, d3, d4);
-                    level.addParticle(ParticleTypes.SMOKE, entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5, d, d3, d4);
-                    //level.addParticle("depthsuspend", entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5, d, d3, d4);
+                    level.addParticle(ParticleTypes.LARGE_SMOKE, entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5, d, d3, d4);
+                    level.addParticle(ParticleTypes.SMOKE, entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5, d, d3, d4);
+                    //level.addParticle("depthsuspend", entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5, d, d3, d4);
                 }
             }
             if(particles.equals("dark_tornado"))
@@ -123,7 +97,7 @@ public class ClientProxy extends CommonProxy
                 for(int i = 0; i < 4; ++i) 
                 {
                     double d = level.random.nextGaussian() * 0.004;
-                    MC.particleEngine.add(new SmallDarkCircleParticle((ClientLevel)level, entity.getX(), entity.getY(), entity.getZ(), d, 1.0));
+                    level.addParticle(EWParticles.SMALL_DARK_CIRCLE.get(), entity.getX(), entity.getY(), entity.getZ(), 0.0, d, 1.0);
                 }
             }
             if(particles.equals("dark_circle")) 
@@ -131,7 +105,7 @@ public class ClientProxy extends CommonProxy
                 for(double j = 0.0; j < 11.0; j += 0.1)
                 {
                     double d2 = level.random.nextGaussian() * 0.004;
-                    MC.particleEngine.add(new DarkCircleParticle((ClientLevel)level, entity.getX(), entity.getY() + 0.5, entity.getZ(), d2, j));
+                    level.addParticle(EWParticles.DARK_CIRCLE.get(), entity.getX(), entity.getY() + 0.5, entity.getZ(), 0.0, d2, j);
                 }
             }
             if(particles.equals("dark_circle_2")) 
@@ -139,7 +113,7 @@ public class ClientProxy extends CommonProxy
                 for(double j = 0.0; j < 11.0; j += 0.1) 
                 {
                     double d2 = level.random.nextGaussian() * 0.004;
-                    MC.particleEngine.add(new DarkCircleParticle((ClientLevel)level, entity.getX(), entity.getY() + 0.5, entity.getZ(), d2, 2.0 + j));
+                    level.addParticle(EWParticles.DARK_CIRCLE.get(), entity.getX(), entity.getY() + 0.5, entity.getZ(), 0.0, d2, 2.0 + j);
                 }
             }
             if(particles.equals("halloween_normal"))
@@ -150,7 +124,7 @@ public class ClientProxy extends CommonProxy
                     double d3 = level.random.nextGaussian() * 0.02;
                     double d4 = level.random.nextGaussian() * 0.02;
                     double d5 = 10.0;
-                    MC.particleEngine.add(new SoulParticle((ClientLevel)level, entity.getX() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5, entity.getY() + entity.level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5, d, d3, d4));
+                    level.addParticle(EWParticles.SOUL.get(), entity.getX() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5, entity.getY() + entity.level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5, d, d3, d4);
                 }
             }
             if(particles.equals("halloween_normal_4")) 
@@ -161,7 +135,7 @@ public class ClientProxy extends CommonProxy
                     double d3 = level.random.nextGaussian() * 0.02;
                     double d4 = level.random.nextGaussian() * 0.02;
                     double d5 = 10.0;
-                    MC.particleEngine.add(new SoulParticle((ClientLevel)level, entity.getX() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5, entity.getY() + entity.level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5, d, d3, d4));
+                    level.addParticle(EWParticles.SOUL.get(), entity.getX() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5, entity.getY() + entity.level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5, d, d3, d4);
                 }
             }
             if(particles.equals("portal"))
@@ -179,7 +153,7 @@ public class ClientProxy extends CommonProxy
                     double d3 = level.random.nextGaussian() * 0.02;
                     double d4 = level.random.nextGaussian() * 0.02;
                     double d5 = 10.0;
-                    MC.particleEngine.add(new LightParticle((ClientLevel)level, entity.getX() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5, entity.getY() + entity.level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5, d, d3, d4));
+                    level.addParticle(EWParticles.LIGHT.get(), entity.getX() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5, entity.getY() + entity.level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5, d, d3, d4);
                 }
             }
             if(particles.equals("lightning_normal"))
@@ -190,40 +164,40 @@ public class ClientProxy extends CommonProxy
                     double d3 = level.random.nextGaussian() * 0.02;
                     double d4 = level.random.nextGaussian() * 0.02;
                     double d5 = 10.0;
-                    MC.particleEngine.add(new LightningParticle((ClientLevel)level, entity.getX() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5, entity.getY() + entity.level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5, d, d3, d4));
+                    level.addParticle(EWParticles.LIGHTNING.get(), entity.getX() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5, entity.getY() + entity.level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5, d, d3, d4);
                 }
             }
             if(particles.equals("lightning_shoot")) 
             {
-                MC.particleEngine.add(new LightningParticle((ClientLevel)level, entity.getX(), entity.getY() + 0.5, entity.getZ(), 0.0, 0.0, 0.0));
+            	level.addParticle(EWParticles.LIGHTNING.get(), entity.getX(), entity.getY() + 0.5, entity.getZ(), 0.0, 0.0, 0.0);
             }
             if(particles.equals("christmas_shoot")) 
             {
-                MC.particleEngine.add(new GreenChristmasParticle((ClientLevel)level, entity.getX(), entity.getY() + 0.5, entity.getZ(), 0.0, 0.0, 0.0));
+                level.addParticle(EWParticles.GREEN_CHRISTMAS.get(), entity.getX(), entity.getY() + 0.5, entity.getZ(), 0.0, 0.0, 0.0);
             }
             if(particles.equals("dark_shoot")) 
             {
                 for(int i = 0; i < 5; ++i)
                 {
-                    MC.particleEngine.add(new DarkProjectileParticle((ClientLevel)level, entity.getX() + entity.getDeltaMovement().x * i / 4.0, entity.getY() + entity.getDeltaMovement().y * i / 4.0, entity.getZ() + entity.getDeltaMovement().z * i / 4.0, -entity.getDeltaMovement().x, -entity.getDeltaMovement().y + 0.2, -entity.getDeltaMovement().z));
+                	level.addParticle(EWParticles.DARK_PROJECTILE.get(), entity.getX() + entity.getDeltaMovement().x * i / 4.0, entity.getY() + entity.getDeltaMovement().y * i / 4.0, entity.getZ() + entity.getDeltaMovement().z * i / 4.0, -entity.getDeltaMovement().x, -entity.getDeltaMovement().y + 0.2, -entity.getDeltaMovement().z);
                 }
             }
             if(particles.equals("light_shoot"))
             {
                 for(int i = 0; i < 5; ++i) 
                 {
-                    MC.particleEngine.add(new LightProjectileParticle((ClientLevel)level, entity.getX() + entity.getDeltaMovement().x * i / 4.0, entity.getY() + entity.getDeltaMovement().y * i / 4.0, entity.getZ() + entity.getDeltaMovement().z * i / 4.0, -entity.getDeltaMovement().x, -entity.getDeltaMovement().y + 0.2, -entity.getDeltaMovement().z));
+                	level.addParticle(EWParticles.LIGHT_PROJECTILE.get(), entity.getX() + entity.getDeltaMovement().x * i / 4.0, entity.getY() + entity.getDeltaMovement().y * i / 4.0, entity.getZ() + entity.getDeltaMovement().z * i / 4.0, -entity.getDeltaMovement().x, -entity.getDeltaMovement().y + 0.2, -entity.getDeltaMovement().z);
                 }
             }
             if(particles.equals("lightning_shoot")) 
             {
-                MC.particleEngine.add(new LightningParticle((ClientLevel)level, entity.getX(), entity.getY() + 0.5, entity.getZ(), 0.0, 0.0, 0.0));
+            	level.addParticle(EWParticles.LIGHTNING.get(), entity.getX(), entity.getY() + 0.5, entity.getZ(), 0.0, 0.0, 0.0);
             }
             if(particles.equals("nature_shoot"))
             {
                 for(int i = 0; i < 5; ++i) 
                 {
-                    MC.particleEngine.add(new NatureProjectileParticle((ClientLevel)level, entity.getX() + entity.getDeltaMovement().x * i / 4.0, entity.getY() + entity.getDeltaMovement().y * i / 4.0, entity.getZ() + entity.getDeltaMovement().z * i / 4.0, -entity.getDeltaMovement().x, -entity.getDeltaMovement().y + 0.2, -entity.getDeltaMovement().z));
+                	level.addParticle(EWParticles.NATURE_PROJECTILE.get(), entity.getX() + entity.getDeltaMovement().x * i / 4.0, entity.getY() + entity.getDeltaMovement().y * i / 4.0, entity.getZ() + entity.getDeltaMovement().z * i / 4.0, -entity.getDeltaMovement().x, -entity.getDeltaMovement().y + 0.2, -entity.getDeltaMovement().z);
                 }
             }
             if(particles.equals("ice_shoot"))
@@ -254,7 +228,7 @@ public class ClientProxy extends CommonProxy
             }
             if(particles.equals("wind_shoot")) 
             {
-                level.addParticle(ParticleTypes.EXPLOSION, entity.getX(), entity.getY() + 0.5, entity.getZ(), 0.0, 0.0, 0.0);
+                level.addParticle(ParticleTypes.CLOUD, entity.getX(), entity.getY() + 0.5, entity.getZ(), 0.0, 0.0, 0.0);
             }
             if(particles.equals("water_shoot"))
             {
@@ -265,7 +239,7 @@ public class ClientProxy extends CommonProxy
                 for(int i = 0; i < 10; ++i) 
                 {
                     double d = level.random.nextGaussian() * 0.004;
-                    MC.particleEngine.add(new FireCircleParticle((ClientLevel)level, entity.getX(), entity.getY() + 0.5, entity.getZ(), d, 2.5));
+                    level.addParticle(EWParticles.FIRE_CIRCLE.get(), entity.getX(), entity.getY() + 0.5, entity.getZ(), 0.0, d, 2.5);
                 }
             }
             if(particles.equals("fire_tornado_small")) 
@@ -273,7 +247,7 @@ public class ClientProxy extends CommonProxy
                 for(int i = 0; i < 10; ++i) 
                 {
                     double d = level.random.nextGaussian() * 0.004;
-                    MC.particleEngine.add(new FireCircleParticle((ClientLevel)level, entity.getX(), entity.getY() + 0.5, entity.getZ(), d, 1.0));
+                    level.addParticle(EWParticles.FIRE_CIRCLE.get(), entity.getX(), entity.getY() + 0.5, entity.getZ(), 0.0, d, 1.0);
                 }
             }
             if(particles.equals("fire_main")) 
@@ -284,7 +258,7 @@ public class ClientProxy extends CommonProxy
                     double d3 = level.random.nextGaussian() * 0.02;
                     double d4 = level.random.nextGaussian() * 0.02;
                     double d5 = 10.0;
-                    level.addParticle(ParticleTypes.FLAME, entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5, d, d3, d4);
+                    level.addParticle(ParticleTypes.FLAME, entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5, d, d3, d4);
                 }
             }
             if(particles.equals("lava_main"))
@@ -295,7 +269,7 @@ public class ClientProxy extends CommonProxy
                     double d3 = level.random.nextGaussian() * 0.02;
                     double d4 = level.random.nextGaussian() * 0.02;
                     double d5 = 10.0;
-                    level.addParticle(ParticleTypes.LAVA, entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5, d, d3, d4);
+                    level.addParticle(ParticleTypes.LAVA, entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5, d, d3, d4);
                 }
             }
             if(particles.equals("earth_big")) 
@@ -306,7 +280,7 @@ public class ClientProxy extends CommonProxy
                     double d3 = level.random.nextGaussian() * 0.02;
                     double d4 = level.random.nextGaussian() * 0.02;
                     double d5 = 10.0;
-                    level.addParticle(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.DIRT.defaultBlockState()), entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5, d, d3, d4);
+                    level.addParticle(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.DIRT.defaultBlockState()), entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5, d, d3, d4);
                 }
             }
             if(particles.equals("lightning_circle_small")) 
@@ -314,14 +288,15 @@ public class ClientProxy extends CommonProxy
                 for(int i = 0; i < 5; ++i) 
                 {
                     double d = level.random.nextGaussian() * 0.004;
-                    MC.particleEngine.add(new LightningCircleParticle((ClientLevel)level, entity.getX(), entity.getY() - 0.5, entity.getZ(), d, 1.0));
+                    level.addParticle(EWParticles.LIGHTNING_CIRCLE.get(), entity.getX(), entity.getY() - 0.5, entity.getZ(), 0.0, d, 0.0);
                 }
             }
             if(particles.equals("light_circle_small")) 
             {
-                for(int i = 0; i < 1; ++i) {
+                for(int i = 0; i < 1; ++i)
+                {
                     double d = level.random.nextGaussian() * 0.004;
-                    MC.particleEngine.add(new LightCircleParticle((ClientLevel)level, entity.getX(), entity.getY() - 0.5, entity.getZ(), d, 1.0));
+                    level.addParticle(EWParticles.LIGHT_CIRCLE.get(), entity.getX(), entity.getY() - 0.5, entity.getZ(), 0.0, d, 0.0);
                 }
             }
             if(particles.equals("ice_normal")) 
@@ -332,7 +307,7 @@ public class ClientProxy extends CommonProxy
                     double d3 = level.random.nextGaussian() * 0.02;
                     double d4 = level.random.nextGaussian() * 0.02;
                     double d5 = 10.0;
-                    MC.particleEngine.add(new SnowFlakeParticle((ClientLevel)level, entity.getX() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5, entity.getY() + entity.level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5, d, -0.06, d4));
+                    level.addParticle(EWParticles.SNOWFLAKE.get(), entity.getX() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5, entity.getY() + entity.level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5, d, -0.06, d4);
                 }
             }
             if(particles.equals("ice_block")) 
@@ -343,7 +318,7 @@ public class ClientProxy extends CommonProxy
                     double d3 = level.random.nextGaussian() * 0.02;
                     double d4 = level.random.nextGaussian() * 0.02;
                     double d5 = 10.0;
-                    entity.level.addParticle(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.ICE.defaultBlockState()), entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5, d, d3, d4);
+                    entity.level.addParticle(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.ICE.defaultBlockState()), entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5, d, d3, d4);
                 }
             }
             if(particles.equals("icefog_normal"))
@@ -354,17 +329,17 @@ public class ClientProxy extends CommonProxy
                     double d3 = level.random.nextGaussian() * 0.02;
                     double d4 = level.random.nextGaussian() * 0.02;
                     double d5 = 10.0;
-                    MC.particleEngine.add(new SnowFlakeParticle((ClientLevel)level, entity.getX() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5 * 30.0, entity.getY() + entity.level.random.nextFloat() * entity.getBbHeight() - d3 * d5 * 10.0, entity.getZ() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5 * 30.0, d, -0.06, d4));
-                    MC.particleEngine.add(new SnowFlakeParticle((ClientLevel)level, entity.getX() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5 * 30.0, entity.getY() + entity.level.random.nextFloat() * entity.getBbHeight() - d3 * d5 * 10.0, entity.getZ() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5 * 30.0, d, -0.06, d4));
-                    MC.particleEngine.add(new SnowFlakeParticle((ClientLevel)level, entity.getX() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5 * 25.0, entity.getY() + entity.level.random.nextFloat() * entity.getBbHeight() - d3 * d5 * 10.0, entity.getZ() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5 * 25.0, d, -0.06, d4));
-                    MC.particleEngine.add(new SnowFlakeParticle((ClientLevel)level, entity.getX() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5 * 25.0, entity.getY() + entity.level.random.nextFloat() * entity.getBbHeight() - d3 * d5 * 10.0, entity.getZ() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5 * 25.0, d, -0.06, d4));
+                    level.addParticle(EWParticles.SNOWFLAKE.get(), entity.getX() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5 * 30.0, entity.getY() + entity.level.random.nextFloat() * entity.getBbHeight() - d3 * d5 * 10.0, entity.getZ() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5 * 30.0, d, -0.06, d4);
+                    level.addParticle(EWParticles.SNOWFLAKE.get(), entity.getX() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5 * 30.0, entity.getY() + entity.level.random.nextFloat() * entity.getBbHeight() - d3 * d5 * 10.0, entity.getZ() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5 * 30.0, d, -0.06, d4);
+                    level.addParticle(EWParticles.SNOWFLAKE.get(), entity.getX() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5 * 25.0, entity.getY() + entity.level.random.nextFloat() * entity.getBbHeight() - d3 * d5 * 10.0, entity.getZ() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5 * 25.0, d, -0.06, d4);
+                    level.addParticle(EWParticles.SNOWFLAKE.get(), entity.getX() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5 * 25.0, entity.getY() + entity.level.random.nextFloat() * entity.getBbHeight() - d3 * d5 * 10.0, entity.getZ() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5 * 25.0, d, -0.06, d4);
                 }
             }
             if(particles.equals("ice_circle_small")) 
             {
                 for(int i = 0; i < 1; ++i) 
                 {
-                    MC.particleEngine.add(new IceCircleParticle((ClientLevel)level, entity.getX(), entity.getY() + 0.5, entity.getZ(), 0.0, 2.0));
+                	level.addParticle(EWParticles.ICE_CIRCLE.get(), entity.getX(), entity.getY() + 0.5, entity.getZ(), 0.0, 0.0, 0.0);
                 }
             }
             if(particles.equals("ender_normal")) 
@@ -378,7 +353,7 @@ public class ClientProxy extends CommonProxy
             {
                 for(int i = 0; i < 5; ++i) 
                 {
-                    MC.particleEngine.add(new WaterCircleParticle((ClientLevel)level, entity.getX(), entity.getY() + 0.5, entity.getZ(), 0.0, 0.5));
+                	level.addParticle(EWParticles.WATER_CIRCLE.get(), entity.getX(), entity.getY() + 0.5, entity.getZ(), 0.0, 0.0, 0.0);
                 }
             }
             if(particles.equals("water_normal")) 
@@ -389,8 +364,8 @@ public class ClientProxy extends CommonProxy
                     double d3 = level.random.nextGaussian() * 0.02;
                     double d4 = level.random.nextGaussian() * 0.02;
                     double d5 = 10.0;
-                    level.addParticle(ParticleTypes.FISHING, entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5, d, d3, d4);
-                    level.addParticle(ParticleTypes.SPLASH, entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5, d, d3, d4);
+                    level.addParticle(ParticleTypes.FISHING, entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5, d, d3, d4);
+                    level.addParticle(ParticleTypes.SPLASH, entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5, d, d3, d4);
                 }
             }
             if(particles.equals("leaf_normal")) 
@@ -401,14 +376,14 @@ public class ClientProxy extends CommonProxy
                     double d3 = level.random.nextGaussian() * 0.02;
                     double d4 = level.random.nextGaussian() * 0.02;
                     double d5 = 10.0;
-                    MC.particleEngine.add(new LeafParticle((ClientLevel)level, entity.getX() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5, entity.getY() + entity.level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5, d, -0.03, d4));
+                    level.addParticle(EWParticles.LEAF.get(), entity.getX() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5, entity.getY() + entity.level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + entity.level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5, d, -0.03, d4);
                 }
             }
             if(particles.equals("leaf_circle")) 
             {
                 for(int i = 0; i < 5; ++i) 
                 {
-                    MC.particleEngine.add(new LeafCircleParticle((ClientLevel)level, entity.getX(), entity.getY() + 0.5, entity.getZ(), 0.0, 0.5));
+                	level.addParticle(EWParticles.LEAF_CIRCLE.get(), entity.getX(), entity.getY() + 0.5, entity.getZ(), 0.0, 0.0, 0.0);
                 }
             }
             if(particles.equals("meteor"))
@@ -419,10 +394,10 @@ public class ClientProxy extends CommonProxy
                     double d3 = level.random.nextGaussian() * 0.02;
                     double d4 = level.random.nextGaussian() * 0.02;
                     double d5 = 10.0;
-                    level.addParticle(ParticleTypes.FLAME, entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5, d, d3, d4);
-                    level.addParticle(ParticleTypes.LAVA, entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5, d, d3, d4);
-                    level.addParticle(ParticleTypes.ENCHANT, entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5, d, d3, d4);
-                    level.addParticle(ParticleTypes.LARGE_SMOKE, entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5, d, d3, d4);
+                    level.addParticle(ParticleTypes.FLAME, entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5, d, d3, d4);
+                    level.addParticle(ParticleTypes.LAVA, entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5, d, d3, d4);
+                    level.addParticle(ParticleTypes.ENCHANT, entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5, d, d3, d4);
+                    level.addParticle(ParticleTypes.LARGE_SMOKE, entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5, d, d3, d4);
                 }
             }
             if(particles.equals("ninjakhan"))
@@ -433,9 +408,9 @@ public class ClientProxy extends CommonProxy
                     double d3 = level.random.nextGaussian() * 0.02;
                     double d4 = level.random.nextGaussian() * 0.02;
                     double d5 = 10.0;
-                    level.addParticle(ParticleTypes.LARGE_SMOKE, entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5, d, d3, d4);
-                    level.addParticle(ParticleTypes.SMOKE, entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5, d, d3, d4);
-                    //level.addParticle("depthsuspend", entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5, d, d3, d4);
+                    level.addParticle(ParticleTypes.LARGE_SMOKE, entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5, d, d3, d4);
+                    level.addParticle(ParticleTypes.SMOKE, entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5, d, d3, d4);
+                    //level.addParticle("depthsuspend", entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5, d, d3, d4);
                 }
             }
             if(particles.equals("toysParticle")) 
@@ -446,12 +421,12 @@ public class ClientProxy extends CommonProxy
                     double d3 = level.random.nextGaussian() * 0.02;
                     double d4 = level.random.nextGaussian() * 0.02;
                     double d5 = 10.0;
-                    level.addParticle(ParticleTypes.ENCHANTED_HIT, entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0f - entity.getBbWidth() - d4 * d5, d, d3, d4);
+                    level.addParticle(ParticleTypes.ENCHANTED_HIT, entity.getX() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d * d5, entity.getY() + level.random.nextFloat() * entity.getBbHeight() - d3 * d5, entity.getZ() + level.random.nextFloat() * entity.getBbWidth() * 2.0F - entity.getBbWidth() - d4 * d5, d, d3, d4);
                 }
             }
             if(particles.equals("water_evaporate"))
             {
-                level.addParticle(ParticleTypes.EXPLOSION, entity.getX(), entity.getY(), entity.getZ(), 0.0, 0.5, 0.0);
+                level.addParticle(ParticleTypes.CLOUD, entity.getX(), entity.getY(), entity.getZ(), 0.0, 0.5, 0.0);
             }
             if(particles.equals("water_sprout")) 
             {
@@ -478,15 +453,16 @@ public class ClientProxy extends CommonProxy
             {
                 for(int i = 0; i < 2; ++i) 
                 {
-                    MC.particleEngine.add(new LeafParticle((ClientLevel)level, posX, posY, posZ, motionX, motionY, motionZ));
+                	level.addParticle(EWParticles.LEAF.get(), posX, posY, posZ, motionX, motionY, motionZ);
                 }
             }
             if(particles.equals("poisonplant")) 
             {
                 double d = level.random.nextGaussian() * 0.02;
                 double d2 = level.random.nextGaussian() * 0.02;
-                for(int j = 0; j < 10; ++j) {
-                    MC.particleEngine.add(new PoisonParticle((ClientLevel)level, posX, posY, posZ, d, 0.05, d2));
+                for(int j = 0; j < 10; ++j) 
+                {
+                    level.addParticle(EWParticles.POISON.get(), posX, posY, posZ, d, 0.05, d2);
                 }
             }
             if(particles.equals("explosiveplant")) 

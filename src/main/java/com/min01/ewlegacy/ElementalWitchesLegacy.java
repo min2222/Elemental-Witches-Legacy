@@ -37,7 +37,7 @@ public class ElementalWitchesLegacy
 		@Override
 		public ResourceLocation getBackgroundImage() 
 		{
-			return new ResourceLocation(ElementalWitchesLegacy.MODID, "textures/gui/container/creative_inventory/tab_elementalwitchmod");
+			return new ResourceLocation(ElementalWitchesLegacy.MODID, "textures/gui/container/creative_inventory/tab_elementalwitchmod.png");
 		}
 	};
 	

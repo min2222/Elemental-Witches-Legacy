@@ -86,7 +86,7 @@ public class EntityLightShield extends TamableAnimal
             }
             if(entitytargetcheck instanceof Player && entitytargetcheck == this.getOwner()) 
             {
-                this.moveTo(entitytargetcheck.getX(), entitytargetcheck.getY() - 1.7, entitytargetcheck.getZ(), 0.0F, 0.0F);
+                this.moveTo(entitytargetcheck.getX(), entitytargetcheck.getY(), entitytargetcheck.getZ(), 0.0F, 0.0F);
             }
         }
         super.aiStep();

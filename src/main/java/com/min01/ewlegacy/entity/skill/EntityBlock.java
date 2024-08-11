@@ -21,6 +21,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
 
 public class EntityBlock extends FallingBlockEntity
 {
@@ -35,6 +36,7 @@ public class EntityBlock extends FallingBlockEntity
     {
         this(EWEntities.BLOCK.get(), world);
         this.block = block.defaultBlockState();
+        ObfuscationReflectionHelper.setPrivateValue(FallingBlockEntity.class, this, block.defaultBlockState(), "f_31946_");
         this.blocksBuilding = true;
         this.setPos(x, y, z);
         this.setDeltaMovement(Vec3.ZERO);
@@ -61,7 +63,7 @@ public class EntityBlock extends FallingBlockEntity
                 }
             }
         }
-        if(this.tickCount >= 30) 
+        if(this.tickCount >= 30 && this.block != null) 
         {
             this.level.setBlockAndUpdate(this.blockPosition(), this.block);
             this.discard();

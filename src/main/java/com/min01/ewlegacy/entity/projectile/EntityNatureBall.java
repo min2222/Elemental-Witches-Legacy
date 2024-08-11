@@ -57,7 +57,7 @@ public class EntityNatureBall extends ThrowableProjectile implements ItemSupplie
     @Override
     protected void onHitEntity(EntityHitResult hitResult)
     {
-        if(hitResult.getEntity() != null) 
+        if(hitResult.getEntity() != null && hitResult.getEntity() instanceof LivingEntity) 
         {
             ((LivingEntity)hitResult.getEntity()).addEffect(new MobEffectInstance(MobEffects.POISON, 200, 20));
             hitResult.getEntity().hurt(DamageSource.thrown(this, this.getOwner()), 4.0F);

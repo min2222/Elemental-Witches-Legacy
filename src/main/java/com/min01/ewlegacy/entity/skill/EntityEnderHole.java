@@ -66,9 +66,10 @@ public class EntityEnderHole extends AbstractOwnableMonster<EntityDarkWitch>
         List<Entity> list = this.level.getEntities(this, this.getBoundingBox().expandTowards(10.0, 10.0, 10.0));
         for(Entity entity1 : list) 
         {
-            if(!(entity1 instanceof EntityDarkMark) && !(entity1 instanceof EntityDarkWitch) && !(entity1 instanceof EntityDarkShoot) && (!(entity1 instanceof Player) || !((Player)entity1).getAbilities().instabuild) && !(entity1 instanceof EntityDarkSummoner)) 
+            if(!(entity1 instanceof EntityDarkMark) && !(entity1 instanceof EntityDarkWitch) && !(entity1 instanceof EntityDarkShoot) && !(entity1 instanceof EntityDarkSummoner)) 
             {
-                if(!(entity1 instanceof EntityEnderHole))
+            	boolean flag = entity1 instanceof Player player ? !player.getAbilities().instabuild : true;
+                if(!(entity1 instanceof EntityEnderHole) && flag)
                 {
                     double xx = entity1.getX() - this.getX();
                     double zz = entity1.getZ() - this.getZ();

@@ -177,6 +177,7 @@ public class EntityLightWitch extends Raider implements RangedAttackMob
             if(this.mirrorTimer == 0) 
             {
                 EntityLightShieldBad entitywitherskull3 = new EntityLightShieldBad(EWEntities.LIGHT_SHIELD_BAD.get(), this.level);
+                entitywitherskull3.setOwner(this);
                 entitywitherskull3.moveTo(this.getX(), this.getY(), this.getZ(), 0.0F, 0.0F);
                 EWUtil.spawnInWorld(this.level, entitywitherskull3);
                 this.mirrorTimer = 600;

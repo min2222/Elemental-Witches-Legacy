@@ -63,7 +63,7 @@ public class EntityDarkEgg extends TamableAnimal
         {
             this.setDeltaMovement(this.getDeltaMovement().multiply(1, 0.9, 1));
         }
-        if(this.TimerToHatch == 0 && this.tickCount % 10 == 0)
+        if(this.TimerToHatch <= 0 && this.tickCount % 10 == 0)
         {
             for(Entity entity1 : list) 
             {

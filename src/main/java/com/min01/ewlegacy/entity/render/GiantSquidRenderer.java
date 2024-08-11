@@ -9,7 +9,7 @@ import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.util.Mth;
 
-public class GiantSquidRenderer extends EWMobRenderer<EntityGiantSquid, SquidModel<EntityGiantSquid>>
+public class GiantSquidRenderer extends EWTranslucentMobRenderer<EntityGiantSquid, SquidModel<EntityGiantSquid>>
 {
 	public GiantSquidRenderer(Context p_174304_) 
 	{

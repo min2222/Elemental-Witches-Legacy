@@ -13,9 +13,9 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
-public class ItemWindStaff extends Item
+public class ItemAirStaff extends Item
 {
-    public ItemWindStaff() 
+    public ItemAirStaff() 
     {
     	super(new Item.Properties().durability(500).tab(ElementalWitchesLegacy.TAB).rarity(Rarity.RARE));
     }

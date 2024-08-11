@@ -169,7 +169,7 @@ public class EntityHalloweenWitch extends Raider implements RangedAttackMob
                     Skeleton entitywitherskull2 = new Skeleton(EntityType.SKELETON, this.level);
                     entitywitherskull2.moveTo(this.getX() + this.random.nextInt(4), this.getY(), this.getZ() + this.random.nextInt(4), this.getYRot(), 0.0F);
                     entitywitherskull2.setTarget(this.getTarget());
-                    entitywitherskull2.setItemSlot(EquipmentSlot.HEAD, new ItemStack(Blocks.PUMPKIN));
+                    entitywitherskull2.setItemSlot(EquipmentSlot.HEAD, new ItemStack(Blocks.CARVED_PUMPKIN));
                     entitywitherskull2.setCustomName(Component.literal("Pumpkin Minion").withStyle(ChatFormatting.YELLOW));
                     entitywitherskull2.setCustomNameVisible(true);
                     EWUtil.spawnInWorld(this.level, entitywitherskull2);

@@ -58,7 +58,7 @@ public class EntityNatureEgg extends TamableAnimal
     public void aiStep() 
     {
         List<Entity> list = this.level.getEntities(this, this.getBoundingBox().expandTowards(20.0, 10.0, 20.0));
-        if(this.TimerToHatch == 0 && this.tickCount % 10 == 0)
+        if(this.TimerToHatch <= 0 && this.tickCount % 10 == 0)
         {
             for(Entity entity1 : list) 
             {

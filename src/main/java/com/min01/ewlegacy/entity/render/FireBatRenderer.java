@@ -17,6 +17,5 @@ public class FireBatRenderer extends EWMobRenderer<EntityFireBat, ModelFireBat>
 	protected void scale(EntityFireBat p_115314_, PoseStack p_115315_, float p_115316_) 
 	{
 		p_115315_.scale(0.3F, 0.3F, 0.3F);
-		p_115315_.translate(0, 3.5F, 0);
 	}
 }

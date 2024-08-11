@@ -55,7 +55,7 @@ public class EntityHalloweenEgg extends TamableAnimal
         {
             this.discard();
         }
-        if(this.TimerToHatch == 0) 
+        if(this.TimerToHatch <= 0) 
         {
             EntityHalloweenPumpkin mob = new EntityHalloweenPumpkin(EWEntities.HALLOWEEN_PUMPKIN.get(), this.level);            
             mob.moveTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);

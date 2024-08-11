@@ -1,10 +1,10 @@
 package com.min01.ewlegacy.entity.render;
 
+import com.min01.ewlegacy.entity.model.ModelElementalWitch;
 import com.min01.ewlegacy.entity.witch.EntityLightningWitch;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 
-import net.minecraft.client.model.WitchModel;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -14,14 +14,14 @@ import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 
-public class LightningWitchLayer extends RenderLayer<EntityLightningWitch, WitchModel<EntityLightningWitch>>
+public class LightningWitchLayer extends RenderLayer<EntityLightningWitch, ModelElementalWitch<EntityLightningWitch>>
 {
-	private final WitchModel<EntityLightningWitch> model;
+	private final ModelElementalWitch<EntityLightningWitch> model;
 	
-	public LightningWitchLayer(RenderLayerParent<EntityLightningWitch, WitchModel<EntityLightningWitch>> p_117346_, EntityModelSet modelSet)
+	public LightningWitchLayer(RenderLayerParent<EntityLightningWitch, ModelElementalWitch<EntityLightningWitch>> p_117346_, EntityModelSet modelSet)
 	{
 		super(p_117346_);
-		this.model = new WitchModel<>(modelSet.bakeLayer(ModelLayers.WITCH));
+		this.model = new ModelElementalWitch<>(modelSet.bakeLayer(ModelLayers.WITCH));
 	}
 
 	@Override
@@ -30,7 +30,7 @@ public class LightningWitchLayer extends RenderLayer<EntityLightningWitch, Witch
 		if(p_116973_.getHealth() <= 30.0F) 
 		{
 			float f = (float)p_116973_.tickCount + p_116976_;
-			WitchModel<EntityLightningWitch> entitymodel = this.model;
+			ModelElementalWitch<EntityLightningWitch> entitymodel = this.model;
 			entitymodel.prepareMobModel(p_116973_, p_116974_, p_116975_, p_116976_);
 			this.getParentModel().copyPropertiesTo(entitymodel);
 			VertexConsumer vertexconsumer = p_116971_.getBuffer(RenderType.energySwirl(new ResourceLocation("textures/entity/creeper/creeper_armor.png"), f * 0.01F % 1.0F, f * 0.01F % 1.0F));

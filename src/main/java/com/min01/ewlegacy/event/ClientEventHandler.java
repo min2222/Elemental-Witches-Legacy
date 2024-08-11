@@ -16,6 +16,7 @@ import com.min01.ewlegacy.entity.model.ModelLightningGolem;
 import com.min01.ewlegacy.entity.model.ModelNinjaKhan;
 import com.min01.ewlegacy.entity.model.ModelRifle;
 import com.min01.ewlegacy.entity.model.ModelRoot;
+import com.min01.ewlegacy.entity.model.ModelSandGolem;
 import com.min01.ewlegacy.entity.model.ModelSwiftEnt;
 import com.min01.ewlegacy.entity.model.ModelWaterMinion;
 import com.min01.ewlegacy.entity.render.DarkMarkRenderer;
@@ -33,7 +34,6 @@ import com.min01.ewlegacy.entity.render.IceWitchRenderer;
 import com.min01.ewlegacy.entity.render.IcicleRenderer;
 import com.min01.ewlegacy.entity.render.LightArrowRenderer;
 import com.min01.ewlegacy.entity.render.LightHealRenderer;
-import com.min01.ewlegacy.entity.render.LightWitchRenderer;
 import com.min01.ewlegacy.entity.render.LightningGolemRenderer;
 import com.min01.ewlegacy.entity.render.LightningWitchRenderer;
 import com.min01.ewlegacy.entity.render.NoneRenderer;
@@ -129,6 +129,7 @@ public class ClientEventHandler
     	event.registerLayerDefinition(ModelNinjaKhan.LAYER_LOCATION, ModelNinjaKhan::createBodyLayer);
     	event.registerLayerDefinition(ModelLightShield.LAYER_LOCATION, ModelLightShield::createBodyLayer);
     	event.registerLayerDefinition(ModelLightningGolem.LAYER_LOCATION, ModelLightningGolem::createBodyLayer);
+    	event.registerLayerDefinition(ModelSandGolem.LAYER_LOCATION, ModelSandGolem::createBodyLayer);
     }
     
     @SubscribeEvent
@@ -202,20 +203,20 @@ public class ClientEventHandler
     	event.registerEntityRenderer(EWEntities.SMALL_DARK_MARK.get(), p_174010_ -> new SmallDarkMarkRenderer(p_174010_));
     	event.registerEntityRenderer(EWEntities.SWIFT_ENT.get(), p_174010_ -> new SwiftEntRenderer(p_174010_));
     	event.registerEntityRenderer(EWEntities.TORNADO.get(), p_174010_ -> new NoneRenderer<>(p_174010_));
-    	event.registerEntityRenderer(EWEntities.WATER_MINION.get(), p_174010_ -> new EWMobRenderer<>(p_174010_, new ModelWaterMinion(p_174010_.bakeLayer(ModelLayers.ZOMBIE)), 0.5F, "water_minion"));
+    	event.registerEntityRenderer(EWEntities.WATER_MINION.get(), p_174010_ -> new EWTranslucentMobRenderer<>(p_174010_, new ModelWaterMinion(p_174010_.bakeLayer(ModelLayers.ZOMBIE)), 0.5F, "water_minion"));
     	event.registerEntityRenderer(EWEntities.WATER_SPOUT.get(), p_174010_ -> new NoneRenderer<>(p_174010_));
     	
     	event.registerEntityRenderer(EWEntities.AIR_WITCH.get(), p_174010_ -> new EWWitchRenderer<>(p_174010_, "air_witch"));
     	event.registerEntityRenderer(EWEntities.CHRISTMAS_WITCH.get(), p_174010_ -> new EWWitchRenderer<>(p_174010_, "christmas_witch"));
     	event.registerEntityRenderer(EWEntities.DARK_WITCH.get(), p_174010_ -> new EWWitchRenderer<>(p_174010_, "dark_witch"));
     	event.registerEntityRenderer(EWEntities.EARTH_MINION.get(), p_174010_ -> new EWWitchRenderer<>(p_174010_, "earth_minion"));
-    	event.registerEntityRenderer(EWEntities.EARTH_MINION_GOOD.get(), p_174010_ -> new EWWitchRenderer<>(p_174010_, "earth_minion_good"));
+    	event.registerEntityRenderer(EWEntities.EARTH_MINION_GOOD.get(), p_174010_ -> new EWWitchRenderer<>(p_174010_, "earth_minion"));
     	event.registerEntityRenderer(EWEntities.EARTH_WITCH.get(), p_174010_ -> new EarthWitchRenderer(p_174010_));
     	event.registerEntityRenderer(EWEntities.FIRE_WITCH.get(), p_174010_ -> new EWWitchRenderer<>(p_174010_, "fire_witch"));
     	event.registerEntityRenderer(EWEntities.HALLOWEEN_WITCH.get(), p_174010_ -> new EWWitchRenderer<>(p_174010_, "halloween_witch"));
     	event.registerEntityRenderer(EWEntities.ICE_WITCH.get(), p_174010_ -> new IceWitchRenderer(p_174010_));
     	event.registerEntityRenderer(EWEntities.LIGHTNING_WITCH.get(), p_174010_ -> new LightningWitchRenderer(p_174010_));
-    	event.registerEntityRenderer(EWEntities.LIGHT_WITCH.get(), p_174010_ -> new LightWitchRenderer(p_174010_));
+    	event.registerEntityRenderer(EWEntities.LIGHT_WITCH.get(), p_174010_ -> new EWWitchRenderer<>(p_174010_, "light_witch"));
     	event.registerEntityRenderer(EWEntities.NATURE_WITCH.get(), p_174010_ -> new EWWitchRenderer<>(p_174010_, "nature_witch"));
     	event.registerEntityRenderer(EWEntities.SAND_MINION.get(), p_174010_ -> new EWWitchRenderer<>(p_174010_, "sand_minion"));
     	event.registerEntityRenderer(EWEntities.SAND_WITCH.get(), p_174010_ -> new EWWitchRenderer<>(p_174010_, "sand_witch"));

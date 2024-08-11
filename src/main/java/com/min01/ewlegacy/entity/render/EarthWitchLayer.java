@@ -1,11 +1,11 @@
 package com.min01.ewlegacy.entity.render;
 
 import com.min01.ewlegacy.ElementalWitchesLegacy;
+import com.min01.ewlegacy.entity.model.ModelElementalWitch;
 import com.min01.ewlegacy.entity.witch.EntityEarthWitch;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 
-import net.minecraft.client.model.WitchModel;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -15,14 +15,14 @@ import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 
-public class EarthWitchLayer extends RenderLayer<EntityEarthWitch, WitchModel<EntityEarthWitch>>
+public class EarthWitchLayer extends RenderLayer<EntityEarthWitch, ModelElementalWitch<EntityEarthWitch>>
 {
-	private final WitchModel<EntityEarthWitch> model;
+	private final ModelElementalWitch<EntityEarthWitch> model;
 	
-	public EarthWitchLayer(RenderLayerParent<EntityEarthWitch, WitchModel<EntityEarthWitch>> p_117346_, EntityModelSet modelSet)
+	public EarthWitchLayer(RenderLayerParent<EntityEarthWitch, ModelElementalWitch<EntityEarthWitch>> p_117346_, EntityModelSet modelSet)
 	{
 		super(p_117346_);
-		this.model = new WitchModel<>(modelSet.bakeLayer(ModelLayers.WITCH));
+		this.model = new ModelElementalWitch<>(modelSet.bakeLayer(ModelLayers.WITCH));
 	}
 
 	@Override
@@ -31,7 +31,7 @@ public class EarthWitchLayer extends RenderLayer<EntityEarthWitch, WitchModel<En
 		if(p_116973_.isArmored()) 
 		{
 			float f = (float)p_116973_.tickCount + p_116976_;
-			WitchModel<EntityEarthWitch> entitymodel = this.model;
+			ModelElementalWitch<EntityEarthWitch> entitymodel = this.model;
 			entitymodel.prepareMobModel(p_116973_, p_116974_, p_116975_, p_116976_);
 			this.getParentModel().copyPropertiesTo(entitymodel);
 			VertexConsumer vertexconsumer = p_116971_.getBuffer(RenderType.energySwirl(new ResourceLocation(ElementalWitchesLegacy.MODID, "textures/entity/earth_armor.png"), f * 0.01F % 1.0F, f * 0.01F % 1.0F));

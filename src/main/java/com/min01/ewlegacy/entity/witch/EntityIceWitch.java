@@ -303,7 +303,7 @@ public class EntityIceWitch extends Raider implements RangedAttackMob
         {
             return super.hurt(source, 3.0F);
         }
-        return !(source.getEntity() instanceof Player) || ((Player)source.getEntity()).getMainHandItem().getItem() instanceof PickaxeItem || super.hurt(source, 0.5f);
+        return !(source.getEntity() instanceof Player) || ((Player)source.getEntity()).getMainHandItem().getItem() instanceof PickaxeItem || super.hurt(source, 0.5F);
     }
     
     @Override

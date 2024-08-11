@@ -74,7 +74,7 @@ public class LightningCircleParticle extends LightningParticle
 		@Override
 		public Particle createParticle(SimpleParticleType p_107421_, ClientLevel p_107422_, double p_107423_, double p_107424_, double p_107425_, double p_107426_, double p_107427_, double p_107428_) 
 		{
-			LightningCircleParticle particle = new LightningCircleParticle(p_107422_, p_107423_, p_107424_, p_107425_, p_107427_, 0.5D);
+			LightningCircleParticle particle = new LightningCircleParticle(p_107422_, p_107423_, p_107424_, p_107425_, p_107427_, 1.0D);
 			particle.pickSprite(this.sprites);
 			return particle;
 		}
