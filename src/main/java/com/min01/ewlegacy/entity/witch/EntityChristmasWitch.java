@@ -242,15 +242,21 @@ public class EntityChristmasWitch extends Raider implements RangedAttackMob
     }
     
     @Override
-    public void remove(RemovalReason p_146834_) 
+    public void die(DamageSource p_37847_) 
     {
-    	super.remove(p_146834_);
-    	if(this.getVehicle() != null && this.getVehicle() instanceof Minecart)
+    	super.die(p_37847_);
+    	if(this.getVehicle() != null)
     	{
-    		this.getVehicle().discard();
-    		if(this.getVehicle().getVehicle() != null && this.getVehicle().getVehicle() instanceof Bat)
+    		if(this.getVehicle() instanceof Minecart minecart)
     		{
-    			this.getVehicle().getVehicle().discard();
+        		if(minecart.getVehicle() != null)
+        		{
+        			if(minecart.getVehicle() instanceof Bat bat)
+        			{
+            			bat.discard();
+        			}
+        		}
+    			minecart.discard();
     		}
     	}
     }

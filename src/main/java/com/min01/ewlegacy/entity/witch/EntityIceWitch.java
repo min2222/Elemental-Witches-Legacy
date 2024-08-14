@@ -297,13 +297,20 @@ public class EntityIceWitch extends Raider implements RangedAttackMob
         }
         if(this.getHealth() > 20.0F) 
         {
-            return super.hurt(source, damage);
+            if(source.getEntity() instanceof EntityBigIceCube)
+            {
+                return super.hurt(source, 3.0F);
+            }
+            if(source.getEntity() instanceof LivingEntity && ((LivingEntity)source.getEntity()).getMainHandItem().getItem() instanceof PickaxeItem)
+            {
+                return super.hurt(source, 0.5F);
+            }
+        	if(source.isBypassInvul())
+        	{
+        		return super.hurt(source, damage);
+        	}
         }
-        if(source.getEntity() instanceof EntityBigIceCube)
-        {
-            return super.hurt(source, 3.0F);
-        }
-        return !(source.getEntity() instanceof Player) || ((Player)source.getEntity()).getMainHandItem().getItem() instanceof PickaxeItem || super.hurt(source, 0.5F);
+    	return super.hurt(source, damage);
     }
     
     @Override

@@ -19,6 +19,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -344,7 +345,7 @@ public class EntityEntGuardian extends AbstractOwnableMonster<EntityNatureWitch>
         {
             return false;
         }
-        if(source.getEntity() instanceof Player && ((Player)source.getEntity()).getMainHandItem().getItem() instanceof AxeItem) 
+        if(source.getEntity() instanceof LivingEntity && ((LivingEntity)source.getEntity()).getMainHandItem().getItem() instanceof AxeItem) 
         {
             return super.hurt(source, damage);
         }

@@ -195,15 +195,15 @@ public class EntityFireWitch extends Raider implements RangedAttackMob
                 EWUtil.spawnInWorld(this.level, entitywitherskull12);
                 EWUtil.spawnInWorld(this.level, entitywitherskull13);
                 EWUtil.spawnInWorld(this.level, entitywitherskull14);
-                entitywitherskull6.setDeltaMovement(entitywitherskull6.getDeltaMovement().subtract(0, -5.0, 0));
-                entitywitherskull7.setDeltaMovement(entitywitherskull7.getDeltaMovement().subtract(0, -5.0, 0));
-                entitywitherskull8.setDeltaMovement(entitywitherskull8.getDeltaMovement().subtract(0, -5.0, 0));
-                entitywitherskull9.setDeltaMovement(entitywitherskull9.getDeltaMovement().subtract(0, -5.0, 0));
-                entitywitherskull10.setDeltaMovement(entitywitherskull10.getDeltaMovement().subtract(0, -5.0, 0));
-                entitywitherskull11.setDeltaMovement(entitywitherskull11.getDeltaMovement().subtract(0, -5.0, 0));
-                entitywitherskull12.setDeltaMovement(entitywitherskull12.getDeltaMovement().subtract(0, -5.0, 0));
-                entitywitherskull13.setDeltaMovement(entitywitherskull13.getDeltaMovement().subtract(0, -5.0, 0));
-                entitywitherskull14.setDeltaMovement(entitywitherskull14.getDeltaMovement().subtract(0, -5.0, 0));
+                entitywitherskull6.setDeltaMovement(entitywitherskull6.getDeltaMovement().subtract(0, 5.0, 0));
+                entitywitherskull7.setDeltaMovement(entitywitherskull7.getDeltaMovement().subtract(0, 5.0, 0));
+                entitywitherskull8.setDeltaMovement(entitywitherskull8.getDeltaMovement().subtract(0, 5.0, 0));
+                entitywitherskull9.setDeltaMovement(entitywitherskull9.getDeltaMovement().subtract(0, 5.0, 0));
+                entitywitherskull10.setDeltaMovement(entitywitherskull10.getDeltaMovement().subtract(0, 5.0, 0));
+                entitywitherskull11.setDeltaMovement(entitywitherskull11.getDeltaMovement().subtract(0, 5.0, 0));
+                entitywitherskull12.setDeltaMovement(entitywitherskull12.getDeltaMovement().subtract(0, 5.0, 0));
+                entitywitherskull13.setDeltaMovement(entitywitherskull13.getDeltaMovement().subtract(0, 5.0, 0));
+                entitywitherskull14.setDeltaMovement(entitywitherskull14.getDeltaMovement().subtract(0, 5.0, 0));
                 this.summonFireRain = 200;
             }
             if(this.summonLava == 0)

@@ -63,6 +63,10 @@ public class EntityEarthMinionGood extends PathfinderMob
     @Override
     public boolean hurt(DamageSource source, float damage)
     {
+    	if(source.isBypassInvul())
+    	{
+    		return super.hurt(source, damage);
+    	}
         return source.getEntity() instanceof Player && ((Player)source.getEntity()).getMainHandItem().getItem() instanceof PickaxeItem && super.hurt(source, damage);
     }
     

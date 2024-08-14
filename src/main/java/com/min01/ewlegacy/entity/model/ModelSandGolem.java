@@ -121,11 +121,11 @@ public class ModelSandGolem extends EntityModel<EntitySandGolem>
 	@Override
 	public void setupAnim(EntitySandGolem entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
-        Shape1.yRot = entity.getFloatingRotation();
-        Shape2.yRot = entity.getFloatingRotation();
-        Shape5.yRot = entity.getFloatingRotation();
-        Shape8.yRot = entity.getFloatingRotation();
-        Shape21.yRot = entity.getFloatingRotation();
+        Shape1.y = entity.getFloatingRotation();
+        Shape2.y = entity.getFloatingRotation();
+        Shape5.y = entity.getFloatingRotation();
+        Shape8.y = entity.getFloatingRotation();
+        Shape21.y = entity.getFloatingRotation();
         Shape1.yRot = ageInTicks / 4.0F;
         Shape1.xRot = ageInTicks / 17.0F;
         Shape1.zRot = ageInTicks / 21.0F;

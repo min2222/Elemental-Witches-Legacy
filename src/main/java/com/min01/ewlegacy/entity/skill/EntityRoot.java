@@ -2,7 +2,6 @@ package com.min01.ewlegacy.entity.skill;
 
 import com.min01.ewlegacy.entity.AbstractOwnableMonster;
 import com.min01.ewlegacy.entity.witch.EntityNatureWitch;
-import com.min01.ewlegacy.init.EWEntities;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -12,6 +11,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -35,14 +35,6 @@ public class EntityRoot extends AbstractOwnableMonster<EntityNatureWitch>
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0, true));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this).setAlertOthers(EntityRoot.class));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, false));
-    }
-    
-    public EntityRoot(Level level, int x, int y, int z)
-    {
-        this(EWEntities.ROOT.get(), level);
-        this.AnchoredBlock[0] = x;
-        this.AnchoredBlock[1] = y;
-        this.AnchoredBlock[2] = z;
     }
     
     public static AttributeSupplier.Builder createAttributes()
@@ -71,6 +63,15 @@ public class EntityRoot extends AbstractOwnableMonster<EntityNatureWitch>
     {
         super.readAdditionalSaveData(compound);
         this.AnchoredBlock = compound.getIntArray("RootBeer");
+    }
+    
+    @Override
+    public void moveTo(double x, double y, double z, float p_20111_, float p_20112_) 
+    {
+    	super.moveTo(x, y, z, p_20111_, p_20112_);
+        this.AnchoredBlock[0] = (int) x;
+        this.AnchoredBlock[1] = (int) y;
+        this.AnchoredBlock[2] = (int) z;
     }
     
     @Override
@@ -112,7 +113,7 @@ public class EntityRoot extends AbstractOwnableMonster<EntityNatureWitch>
     	{
             return false;
         }
-        if(source.getEntity() instanceof Player && ((Player)source.getEntity()).getMainHandItem().getItem() instanceof AxeItem)
+        if(source.getEntity() instanceof LivingEntity && ((LivingEntity)source.getEntity()).getMainHandItem().getItem() instanceof AxeItem)
         {
             return super.hurt(source, damage);
         }

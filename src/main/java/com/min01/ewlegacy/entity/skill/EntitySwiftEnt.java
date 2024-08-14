@@ -226,7 +226,7 @@ public class EntitySwiftEnt extends AbstractOwnableMonster<EntityNatureWitch>
         {
             return false;
         }
-        if(source.getEntity() instanceof Player && ((Player)source.getEntity()).getMainHandItem().getItem() instanceof AxeItem) 
+        if(source.getEntity() instanceof LivingEntity && ((LivingEntity)source.getEntity()).getMainHandItem().getItem() instanceof AxeItem) 
         {
             return super.hurt(source, damage);
         }

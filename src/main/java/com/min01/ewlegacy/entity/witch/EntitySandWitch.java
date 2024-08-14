@@ -366,10 +366,14 @@ public class EntitySandWitch extends Raider
     @Override
     public boolean hurt(DamageSource source, float damage)
     {
-        if(source.getEntity() instanceof Player && ((Player)source.getEntity()).getMainHandItem().getItem() instanceof ShovelItem) 
+        if(source.getEntity() instanceof LivingEntity && ((LivingEntity)source.getEntity()).getMainHandItem().getItem() instanceof ShovelItem) 
         {
             return super.hurt(source, 1.0F);
         }
+    	if(source.isBypassInvul())
+    	{
+    		return super.hurt(source, damage);
+    	}
         return super.hurt(source, 0.0F);
     }
     

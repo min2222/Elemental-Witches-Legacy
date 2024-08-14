@@ -5,6 +5,7 @@ import java.util.function.Supplier;
 import com.min01.ewlegacy.ElementalWitchesLegacy;
 import com.min01.ewlegacy.item.ItemAirEgg;
 import com.min01.ewlegacy.item.ItemAirShard;
+import com.min01.ewlegacy.item.ItemAirStaff;
 import com.min01.ewlegacy.item.ItemChristmasStaff;
 import com.min01.ewlegacy.item.ItemDarkEgg;
 import com.min01.ewlegacy.item.ItemDarkShard;
@@ -34,12 +35,13 @@ import com.min01.ewlegacy.item.ItemSandShard;
 import com.min01.ewlegacy.item.ItemWaterEgg;
 import com.min01.ewlegacy.item.ItemWaterShard;
 import com.min01.ewlegacy.item.ItemWaterStaff;
-import com.min01.ewlegacy.item.ItemAirStaff;
 
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -94,6 +96,13 @@ public class EWItems
 	public static final RegistryObject<Item> NATURE_WITCH_SPAWN_EGG = registerSpawnEgg("nature_witch_spawn_egg", () -> EWEntities.NATURE_WITCH.get(), 3368448, 3355392);
 	public static final RegistryObject<Item> HALLOWEEN_WITCH_SPAWN_EGG = registerSpawnEgg("halloween_witch_spawn_egg", () -> EWEntities.HALLOWEEN_WITCH.get(), 1640199, 3872523);
 	public static final RegistryObject<Item> CHRISTMAS_WITCH_SPAWN_EGG = registerSpawnEgg("christmas_witch_spawn_egg", () -> EWEntities.CHRISTMAS_WITCH.get(), 745761, 14614785);
+	
+	public static final RegistryObject<Item> PRESENT = registerBlockItem("present", () -> EWBlocks.PRESENT.get());
+	
+	public static RegistryObject<Item> registerBlockItem(String name, Supplier<Block> block)
+	{
+		return ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+	}
 	
 	public static <T extends Mob> RegistryObject<Item> registerSpawnEgg(String name, Supplier<EntityType<T>> entity, int color1, int color2) 
 	{

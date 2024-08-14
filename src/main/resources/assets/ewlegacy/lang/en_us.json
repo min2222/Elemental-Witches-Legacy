@@ -126,6 +126,7 @@
 	"entity.ewlegacy.sand_minion": "Sand Minion",
 	"entity.ewlegacy.sand_witch": "Sand Witch",
 	"entity.ewlegacy.water_witch": "Water Witch",
+	"block.ewlegacy.present": "Present",
 	"effect.ewlegacy.paralyze": "Paralyze",
 	"effect.ewlegacy.paranoid": "Paranoid",
 	"effect.ewlegacy.ender_skin": "Ender Skin",
@@ -133,6 +134,7 @@
 	"effect.ewlegacy.air_stance": "Air Stance",
 	"effect.ewlegacy.frost_bite": "Frost Bite",
 	"effect.ewlegacy.water_pull": "Water Pull",
+	"chat.ewlegacy.lookup": "Look Up?",
 	"chat.ewlegacy.no_power": "One does not simply use the staff...",
 	"death.attack.light_arrow": "Receive Divine Punishment, death.."
 }

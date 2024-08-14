@@ -41,7 +41,7 @@ public class ModelRifle extends EntityModel<EntityRifle>
 	{
         this.Shape1.xRot = headPitch / 57.295776F;
         this.Shape1.yRot = netHeadYaw / 57.295776F;
-        this.Shape1.yRot = entity.getFloatingRotation();
+        this.Shape1.y = entity.getFloatingRotation();
 	}
 
 	@Override

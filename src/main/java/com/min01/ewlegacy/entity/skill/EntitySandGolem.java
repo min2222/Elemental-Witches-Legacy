@@ -237,7 +237,7 @@ public class EntitySandGolem extends Monster
     @Override
     public boolean hurt(DamageSource source, float damage)
     {
-        if(source.getEntity() instanceof Player && ((Player)source.getEntity()).getMainHandItem().getItem() instanceof PickaxeItem) 
+        if(source.getEntity() instanceof LivingEntity && ((LivingEntity)source.getEntity()).getMainHandItem().getItem() instanceof PickaxeItem) 
         {
             return super.hurt(source, damage);
         }
